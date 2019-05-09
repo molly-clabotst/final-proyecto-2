@@ -9,13 +9,13 @@
                 <div class="form-group">
                     <label for="task-name">Task Name</label>
                     <!--                    TODO: add a v-show in order to create an editing mode-->
-                    <input id="task-name" class="form-control" v-model.trim="newTaskName">
+                    <input id="task-name" TYPE="time" class="form-control" v-model.trim="newTaskName">
                     <!--                    <label v-show="edit">{{name}}</label>-->
                 </div>
                 <div class="form-group">
                     <label for="task-start">Task Start</label>
                     <!--                    TODO: add a v-show in order to create an editing mode-->
-                    <input id="task-start" class="form-control" v-model.trim="newTaskStart">
+                    <input id="task-start" type="time" class="form-control" v-model.trim="newTaskStart">
                     <!--<label v-show="edit">{{start}}</label>-->
                 </div>
                 <div class="form-group">
@@ -56,6 +56,7 @@
                 var field1 = this.newTaskStart.split(':');
                 var field2 = this.newTaskEnd.split(':');
                 // changing the entered times from strings into dates
+                // TODO: TURN STRINGS INTO NUMBER
                 var date1 = new Date(2000,0,1,field1[0],field1[1]);
                 var date2 = new Date(2000,0,1,field2[0],field2[1]);
                 // calculating the difference in times

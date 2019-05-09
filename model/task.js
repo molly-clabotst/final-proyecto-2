@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes)=>{
             allowNull: false
         }
     });
-
+// TODO: validation method
     Task.sync({force:false}).then(()=>{
         console.log('synced table')
     });

@@ -14,14 +14,11 @@ sequelize.authenticate()
     .then(()=>console.log('connected to sqlite'))
     .catch(err=>console.log('error connecting',err));
 
-// initialize task model
-let task = require('./model/task')(sequelize, Sequelize)
-
 // app configuration
 var app = express();
 app.use(bodyParser.json());
 
-app.use('api',api_routes(task));
+app.use('/api',api_routes(task));
 
 // star server funning
 var server = app.listen(process.env.PORT || 3000, function () {
