@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label for="task-name">Task Name</label>
                     <!--                    TODO: add a v-show in order to create an editing mode-->
-                    <input id="task-name" TYPE="time" class="form-control" v-model.trim="newTaskName">
+                    <input id="task-name"  class="form-control" v-model.trim="newTaskName">
                     <!--                    <label v-show="edit">{{name}}</label>-->
                 </div>
                 <div class="form-group">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="task-end">Task End</label>
-                    <input id="task-end" class="form-control" v-model.trim="newTaskEnd">
+                    <input id="task-end" TYPE="time" class="form-control" v-model.trim="newTaskEnd">
                     <!--<label v-show="edit">{{end}}</label>-->
                 </div>
                 <Song v-on:song-found="addSong"></Song>
