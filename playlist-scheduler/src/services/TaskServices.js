@@ -12,5 +12,11 @@ export default {
         return axios.get(base_url).then(response=>{
             return response.data
         })
-    }
+    },
+    // TODO: when to use this
+    // updateTask(task){
+    //     return.axios.patch(`${base_url}/${task.id}`, task).then(response=>{
+    //         return response.data
+    //     })
+    // }
 }

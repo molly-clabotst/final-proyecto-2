@@ -23,6 +23,17 @@ app.use(bodyParser.json());
 
 app.use('/api',api_routes(task));
 
+// Error handlers - for route no foun
+app.use(function (req, res, next) {
+    res.status(404).send('Not Found')
+});
+
+// Error handler for server errors
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500).send('Server error')
+});
+
 // star server funning
 var server = app.listen(process.env.PORT || 3000, function () {
     console.log('app running on port', server.address().port)

@@ -69,6 +69,7 @@
         //     return thing
         //   });
       },
+      // TODO: create delete songs method and surrounding infrastructure
       updateTasks(){
         this.$task_api.getAllTasks().then( tasks=>{
           this.tasks = tasks

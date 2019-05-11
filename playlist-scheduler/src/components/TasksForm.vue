@@ -53,12 +53,12 @@
         methods:{
             calcDur(){
                 // taking the entered timesand spliting it into hour and minutes
-                var field1 = this.newTaskStart.split(':');
-                var field2 = this.newTaskEnd.split(':');
+                var begin = this.newTaskStart.split(':');
+                var finish = this.newTaskEnd.split(':');
                 // changing the entered times from strings into dates
                 // TODO: TURN STRINGS INTO NUMBER
-                var date1 = new Date(2000,0,1,field1[0],field1[1]);
-                var date2 = new Date(2000,0,1,field2[0],field2[1]);
+                var date1 = new Date(2000,0,1,begin[0],begin[1]);
+                var date2 = new Date(2000,0,1,finish[0],finish[1]);
                 // calculating the difference in times
                 var diff = date2-date1;
                 // converting it from milliseconds to minutes
@@ -75,7 +75,7 @@
                 // check to make sure that the inputs have values
                 if (this.newTaskName&& this.newTaskStart && this.newTaskEnd){
                     // create array to transfer data
-                    let task={taskName: this.newTaskName,stert: this.date1, end: this.date2, taskDuration: this.dura, song: this.song};
+                    let task={taskName: this.newTaskName,start: this.date1, end: this.date2, taskDuration: this.dura, song: this.song};
                     // emit array to parent app.vue
                     this.$emit('task-added',task);
                     // clear inputs
