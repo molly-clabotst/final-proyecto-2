@@ -14,6 +14,9 @@ sequelize.authenticate()
     .then(()=>console.log('connected to sqlite'))
     .catch(err=>console.log('error connecting',err));
 
+// initialize student model
+var task = require('./model/task.js')(sequelize,Sequelize)
+
 // app configuration
 var app = express();
 app.use(bodyParser.json());
