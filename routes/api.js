@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 module.exports = function (Task) {
 
     var router = express.Router()
-    // TODO: may have issue here with "tasks"
+
     router.get('/tasks', function (req, res, next) {
         // is the order ascending or descending, how to change?
         Task.findAll({order: ['start']}).then(tasks =>{
@@ -23,7 +23,7 @@ module.exports = function (Task) {
             return next(err)
         })
     })
-    // Not sure exactly the best way to handle this, not sure exactly what it's doing'
+
     router.patch('/tasks/:id',function (req, res, next) {
         Task.update(
             req.body,{
