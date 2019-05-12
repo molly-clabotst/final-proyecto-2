@@ -26,9 +26,22 @@ module.exports = function (Task) {
     // Not sure exactly the best way to handle this, not sure exactly what it's doing'
     router.patch('/tasks/:id',function (req, res, next) {
         Task.update(
-            req.body,{where: {id: req.params.id}}
+            req.body,{
+                where: {
+                    id: req.params.id
+                }}
         ).then((rowsModified)=>{
-            return res.send('okay')
+            if(!rowsModified[0]){
+                return res.status(404).send('Not found')
+            }else {
+                return res.send('okay')
+            }
+        }).catch(err =>{
+            if (err instanceof Sequelize.ValidationError){
+                let messages = err.errors.map((e)=> e.message)
+                return res.status(500).json(messages)
+            }
+            return next(err)
         })
     })
     return router

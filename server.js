@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
 var api_routes = require('./routes/api');
+var path = require('path')
 
 // database configuration
 sequelize = new Sequelize({
@@ -20,6 +21,9 @@ var task = require('./model/task.js')(sequelize,Sequelize)
 // app configuration
 var app = express();
 app.use(bodyParser.json());
+
+// Serve static files from /dist directory
+app.use(express.static(path.join((__dirname, 'playlist-scheduler','dist'))));
 
 app.use('/api',api_routes(task));
 

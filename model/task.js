@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes)=>{
         }
     });
 // TODO: validation method
+//     if the task that is being added starts after all tasks
+//     currently in db, make sure that it's start time is also
+//     after the closest tasks end time.
+//     Do the opposite if it starts before all other tickets
     Task.sync({force:false}).then(()=>{
         console.log('synced table')
     });
