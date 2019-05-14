@@ -1,8 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var Sequelize = require('sequelize');
 var api_routes = require('./routes/api');
 var path = require('path');
+
+// database configuration
+var Sequelize = require('sequelize');
 
 db_url = process.env.DATABASE_URL;
 
