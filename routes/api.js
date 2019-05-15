@@ -25,11 +25,13 @@ module.exports = function (Task) {
     })
 
     router.patch('/tasks/:id',function (req, res, next) {
+        // find row to patch updates to
         Task.update(
             req.body,{
                 where: {
                     id: req.params.id
                 }}
+        // if the row is not found and not modified then send an error message to...?
         ).then((rowsModified)=>{
             if(!rowsModified[0]){
                 return res.status(404).send('Not found')

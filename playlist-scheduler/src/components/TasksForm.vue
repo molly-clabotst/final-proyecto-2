@@ -8,20 +8,19 @@
                 <h4 class="card-title">Add Task</h4>
                 <div class="form-group">
                     <label for="task-name">Task Name</label>
-                    <!--                    TODO: add a v-show in order to create an editing mode-->
-                    <input id="task-name"  class="form-control" v-model.trim="newTaskName">
-                    <!--                    <label v-show="edit">{{name}}</label>-->
+                    <input id="task-name"  class="form-control" v-model.trim="newTaskName" required>
                 </div>
                 <div class="form-group">
                     <label for="task-start">Task Start</label>
-                    <!--                    TODO: add a v-show in order to create an editing mode-->
-                    <input id="task-start" type="time" class="form-control" v-model.trim="newTaskStart">
-                    <!--<label v-show="edit">{{start}}</label>-->
+<!--                    Time input type controls the range of input to time strings only -->
+<!--                    Value sets the default value of the of the time input to avoid nullness-->
+                    <input id="task-start" type="time" class="form-control"
+                           v-model="newTaskStart" value="13:30" required>
                 </div>
                 <div class="form-group">
                     <label for="task-end">Task End</label>
-                    <input id="task-end" TYPE="time" class="form-control" v-model.trim="newTaskEnd">
-                    <!--<label v-show="edit">{{end}}</label>-->
+                    <input id="task-end" TYPE="time" class="form-control"
+                           v-model="newTaskEnd" value="13:31" required>
                 </div>
                 <Song v-on:song-found="addSong"></Song>
                 <button class="btn btn-primary" v-on:click.prevent="addTask">Add Task</button>
@@ -45,8 +44,6 @@
                 newTaskEnd: '',
                 errors: [],
                 dura: 0,
-                date1: new Date(),
-                date2: new Date(),
                 song: 'lies',
             }
         },
@@ -55,15 +52,22 @@
                 // taking the entered timesand spliting it into hour and minutes
                 var begin = this.newTaskStart.split(':');
                 var finish = this.newTaskEnd.split(':');
-                // changing the entered times from strings into dates
-                // TODO: TURN STRINGS INTO NUMBER
-                var date1 = new Date(2000,0,1,begin[0],begin[1]);
-                var date2 = new Date(2000,0,1,finish[0],finish[1]);
+                // changing the entered times from strings into numbers
+               var hourB = parseInt(begin[0]);
+               var minB = parseInt(begin[1]);
+               var hourF = parseInt(finish[0]);
+               var minF = parseInt(finish[1]);
                 // calculating the difference in times
-                var diff = date2-date1;
-                // converting it from milliseconds to minutes
-                //TODO: take into account for tasks greater than one hour
-                diff= diff/60000;
+                if (hourB===hourF){
+                    var diff = minF-minB;
+                } else if (hourB>hourF){
+                    // TODO: confirm that alert is in the correct syntax
+                    alert('Please be sure that task ends before it starts')
+                } else{
+                    var hourDiff = hourF-hourB;
+                    diff = minF-minB;
+                    diff += hourDiff;
+                }
                 // set the value of the duration to the difference in start and end times
                 this.dura = diff;
             },
@@ -75,7 +79,7 @@
                 // check to make sure that the inputs have values
                 if (this.newTaskName&& this.newTaskStart && this.newTaskEnd){
                     // create array to transfer data
-                    let task={taskName: this.newTaskName,start: this.date1, end: this.date2, taskDuration: this.dura, song: this.song};
+                    let task={taskName: this.newTaskName, taskDuration: this.dura, song: this.song};
                     // emit array to parent app.vue
                     this.$emit('task-added',task);
                     // clear inputs

@@ -25,8 +25,10 @@
     },
     methods:{
       newTaskAdded(task){
-        // TODO: is there a special way to validate that one task starts after the other is complete?
-        // TODO: show user an error message
+        // TODO: is there a special way to validate that
+          //  one task starts after the other is complete?
+          //  Also prevent task from being added
+        // TODO: add song to song table
         this.$task_api.addTask(task).then(task=>{
           this.updateTasks()
         }).catch(err=>{
@@ -54,8 +56,6 @@
         //       let otherThing = t1.end - t2.stert;
         //       // if task 2 starts before task 1 ends shows error message in the console
         //       if (otherThing>=0){
-        //         //TODO: show user error message
-        //         //TODO: how to prevent the entry from existing
         //         console.log("One task must end before the other begins")
         //       }
         //       // the tasks would be starting concurrently
