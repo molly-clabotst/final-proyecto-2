@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const SpotifyAudioFeaturesApril2019s = sequelize.define('SpotifyAudioFeaturesApril2019s', {
+  const SpotifyAudioFeaturesApril2019 = sequelize.define('SpotifyAudioFeaturesApril2019', {
     artist_name: DataTypes.STRING,
     track_id: DataTypes.STRING,
     track_name: DataTypes.STRING,
@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     valence: DataTypes.FLOAT,
     popularity: DataTypes.FLOAT
   }, {});
-  SpotifyAudioFeaturesApril2019s.associate = function(models) {
+  SpotifyAudioFeaturesApril2019.associate = function(models) {
     // associations can be defined here
   };
-  return SpotifyAudioFeaturesApril2019s;
+  return SpotifyAudioFeaturesApril2019;
 };

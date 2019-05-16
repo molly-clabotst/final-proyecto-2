@@ -34,8 +34,8 @@ if(db_url){
 
 
 // initialize task and song models
-var task = require('./model/task.js')(sequelize,Sequelize);
-var song = require('./model/song')(sequelize,Sequelize);
+var task = require('./models/task.js')(sequelize,Sequelize);
+var song = require('./models/song')(sequelize,Sequelize);
 
 // app configuration
 var app = express();
