@@ -1,19 +1,19 @@
 var express = require('express');
 var Sequelize = require('sequelize');
 
-module.exports = function (Task) {
+module.exports = function (SongChose) {
 
     var router = express.Router()
 
-    router.get('/tasks', function (req, res, next) {
+    router.get('/', function (req, res, next) {
         // is the order ascending or descending, how to change?
-        Task.findAll({order: ['start']}).then(tasks =>{
-            return res.json(tasks)
+        SongChose.findAll({order: ['start']}).then(songsChosen=>{
+            return res.json(songsChosen)
         }).catch(err=>next(err))
     })
 
-    router.post('/tasks', function (req, res, next) {
-        Task.create(req.body).then((data)=>{
+    router.post('/', function (req, res, next) {
+        SongChose.create(req.body).then((data)=>{
             return res.status(201).send('ok')
         }).catch(err=>{
             if (err instanceof Sequelize.ValidationError)   {
@@ -24,14 +24,14 @@ module.exports = function (Task) {
         })
     })
 
-    router.patch('/tasks/:id',function (req, res, next) {
+    router.patch('/:id',function (req, res, next) {
         // find row to patch updates to
-        Task.update(
+        SongChose.update(
             req.body,{
                 where: {
                     id: req.params.id
                 }}
-        // if the row is not found and not modified then send an error message to...?
+            // if the row is not found and not modified then send an error message to...?
         ).then((rowsModified)=>{
             if(!rowsModified[0]){
                 return res.status(404).send('Not found')

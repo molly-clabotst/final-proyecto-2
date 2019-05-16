@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
-        }, song: {
+        },duration:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },song: {
             type: DataTypes.STRING,
             allowNull: false
         }

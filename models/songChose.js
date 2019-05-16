@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes)=>{
         },
         duration:{
             // TODO: check on this from spotify and xml
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false,
         },
         track_id:{
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes)=>{
             allowNull: false,
             unique: true
         }
-    });-
+    });
     Song.sync({force:true}).then(()=>{
         console.log('synced table')
     })
