@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes)=>{
         },song: {
             type: DataTypes.STRING,
             allowNull: false,
-            foreignKey:
+            // foreignKey:
         }
     });
 // TODO: validation method

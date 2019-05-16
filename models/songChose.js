@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            foreignKey:
+            // foreignKey:
         }
     });
     Song.sync({force:true}).then(()=>{
