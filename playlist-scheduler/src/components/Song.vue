@@ -19,7 +19,7 @@
                 <input id="chose-song" class="form-control" v-model="newSongName">
 <!--                TODO: is there any way to limit the number of entries shown and force a scroll?-->
 <!--                select song from list and send song to task-->
-                <select v-model="songs" v-on:select="sendSong" multiple>
+                <select v-model="songData" v-on:select="sendSong" multiple>
                     <option v-for="option in options" v-bind:value="option.value">
                         {{option.text}}
                     </option>
@@ -38,36 +38,36 @@
         name: "Song",
         data(){
             return{
-                songs:'lies',
                 newSongName: '',
                 selected: '',
                 options:[],
+                // option:[],
                 songData: [],
             }
         },
         methods:{
             searchSong(){
-                // TODO: include a decision tree that searches through songs based on the combobox
+                // TODO: connect to spotify api to search via these choices
                 if (this.selected.localeCompare('album')){
                     this.songData = '';
                 }else if (this.selected.localeCompare('artist')){
-                    this.songData = '';
+                    this.$spotify_song_api.searchArtist(this.newSongName).then(songsByArtist=>{
+                        this.songData = songsByArtist;
+                    });
+
                 }else if (this.selected.localeCompare('genre')) {
                     this.songData = '';
                 }else if (this.selected.localeCompare('song')){
-                    this.songData = '';
+                    this.$spotify_song_api.getOneSpotSong(this.newSongName).then(foundSong=>{
+                        this.songData = foundSong;
+                    })
                 }
-
-
-                this.pushSongToList()
-            },
-            pushSongsToList(){
-
+                this.newSongName = '';
+                this.selected = '';
             },
             sendSong(){
-                if(this.newSongName){
-                    this.$emit('song-found',this.newSongName)
-                }
+                this.$song_chose_api.addSongToDatabase(this.option);
+                this.$emit('song-found',this.newSongName)
             }
         }
     }

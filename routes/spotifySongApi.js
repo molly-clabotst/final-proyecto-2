@@ -26,12 +26,13 @@ module.exports = function (SpotifySong) {
         })
     })
 
-    router.patch('/:id',function (req, res, next) {
+    // will pull up entry for song under the value track_name
+    router.patch('/:track_name',function (req, res, next) {
         // find row to patch updates to
         SpotifySong.update(
             req.body,{
                 where: {
-                    id: req.params.id
+                    track_name: req.params.track_name
                 }}
             // if the row is not found and not modified then send an error message to...?
         ).then((rowsModified)=>{

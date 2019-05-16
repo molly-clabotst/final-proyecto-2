@@ -24,12 +24,12 @@ module.exports = function (SongChose) {
         })
     })
 
-    router.patch('/:id',function (req, res, next) {
+    router.patch('/:name',function (req, res, next) {
         // find row to patch updates to
         SongChose.update(
             req.body,{
                 where: {
-                    id: req.params.id
+                    name: req.params.name
                 }}
             // if the row is not found and not modified then send an error message to...?
         ).then((rowsModified)=>{
