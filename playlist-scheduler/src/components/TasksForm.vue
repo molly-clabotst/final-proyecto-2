@@ -79,7 +79,8 @@
                 // check to make sure that the inputs have values
                 if (this.newTaskName&& this.newTaskStart && this.newTaskEnd){
                     // create array to transfer data
-                    let task={taskName: this.newTaskName, taskDuration: this.dura, song: this.song};
+                    let task={taskName: this.newTaskName, start: this.newTaskStart, end: this.newTaskEnd,
+                        taskDuration: this.dura, song: this.song};
                     // emit array to parent app.vue
                     this.$emit('task-added',task);
                     // clear inputs

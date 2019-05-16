@@ -9,7 +9,7 @@ module.exports = function (SpotifySong) {
 
     router.get('/', function (req, res, next) {
         // is the order ascending or descending, how to change?
-        SpotifySong.findAll({order: ['start']}).then(spotifySongs =>{
+        SpotifySong.findAll({order: ['id']}).then(spotifySongs =>{
             return res.json(spotifySongs)
         }).catch(err=>next(err))
     })

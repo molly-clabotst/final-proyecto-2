@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     track_name: DataTypes.STRING,
     acousticness: DataTypes.FLOAT,
     danceability: DataTypes.FLOAT,
-    duration_ms: DataTypes.FLOAT,
+    duration_ms: {
+      type: DataTypes.FLOAT,
+      model: 'songChose'
+    },
     energy: DataTypes.FLOAT,
     instrumentalness: DataTypes.FLOAT,
     key: DataTypes.FLOAT,

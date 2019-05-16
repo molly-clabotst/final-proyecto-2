@@ -7,7 +7,7 @@ module.exports = function (SongChose) {
 
     router.get('/', function (req, res, next) {
         // is the order ascending or descending, how to change?
-        SongChose.findAll({order: ['start']}).then(songsChosen=>{
+        SongChose.findAll({order: ['id']}).then(songsChosen=>{
             return res.json(songsChosen)
         }).catch(err=>next(err))
     })

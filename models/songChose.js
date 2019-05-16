@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes)=>{
     var Song = sequelize.define('SongChose', {
         name:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            model: 'task'
         },
         duration:{
             // TODO: check on this from spotify and xml
@@ -15,7 +16,7 @@ module.exports = (sequelize, DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            // foreignKey:
+            model: 'spotifySong'
         }
     });
     Song.sync({force:true}).then(()=>{

@@ -43,7 +43,7 @@ var app = express();
 app.use(bodyParser.json());
 
 // Serve static files from /dist directory
-app.use(express.static(path.join((__dirname, 'playlist-scheduler', 'dist'))));
+app.use(express.static(path.join(__dirname, 'playlist-scheduler/dist')));
 
 // when x route is used call corresponding x
 // javascript file that is the model
