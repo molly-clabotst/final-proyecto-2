@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('SpotifyAudioFeaturesApril2019s', {
+    return queryInterface.createTable('SpotifySongs', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -70,6 +70,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('SpotifyAudioFeaturesApril2019s');
+    return queryInterface.dropTable('SpotifySongs');
   }
 };

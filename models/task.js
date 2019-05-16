@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes)=>{
             allowNull: false,
         },song: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            foreignKey:
         }
     });
 // TODO: validation method

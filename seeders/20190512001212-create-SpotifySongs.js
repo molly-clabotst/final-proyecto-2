@@ -37,7 +37,7 @@ module.exports = {
       s.updatedAt = new Date();
       return s
     })
-    return queryInterface.bulkInsert('SpotifyAudioFeaturesApril2019s',createNUpdate,{})
+    return queryInterface.bulkInsert('SpotifySongs',createNUpdate,{})
   },
 
   down: (queryInterface, Sequelize) => {
@@ -48,7 +48,7 @@ module.exports = {
       Example:
 
      */
-      return queryInterface.bulkDelete('SpotifyAudioFeaturesApril2019s', null, {});
+      return queryInterface.bulkDelete('SpotifySongs', null, {});
 
   }
 };

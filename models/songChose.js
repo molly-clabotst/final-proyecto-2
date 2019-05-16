@@ -1,7 +1,6 @@
-// Did not restart nodemon
 module.exports = (sequelize, DataTypes)=>{
 
-    var Song = sequelize.define('Song', {
+    var Song = sequelize.define('SongChose', {
         name:{
             type: DataTypes.STRING,
             allowNull: false
@@ -15,7 +14,8 @@ module.exports = (sequelize, DataTypes)=>{
             // TODO: check this too
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            foreignKey:
         }
     });
     Song.sync({force:true}).then(()=>{

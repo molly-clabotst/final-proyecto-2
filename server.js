@@ -25,7 +25,7 @@ if(db_url){
 // otherwise run locally and use sqlite
     sequelize = new Sequelize({
         dialect: 'sqlite',
-        storage: './db.sqlite3'
+        storage: './development.db'
     });
 // verify connection
     sequelize.authenticate()

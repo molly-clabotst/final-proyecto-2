@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const SpotifySongs = sequelize.define('SpotifyAudioFeaturesApril2019', {
+  const SpotifySongs = sequelize.define('SpotifySongs', {
     artist_name: DataTypes.STRING,
     track_id: DataTypes.STRING,
     track_name: DataTypes.STRING,
