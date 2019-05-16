@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'playlist-scheduler/dist')));
 
 // when x route is used call corresponding x
 // javascript file that is the model
-app.use('/api/task',task_api_routes(task));
+app.use('/api/tasks',task_api_routes(task));
 app.use('/api/song-chose',song_chose_api_routes(songChose));
 app.use('/api/spotify-song', spotify_song_api_routes(spotifySongs));
 

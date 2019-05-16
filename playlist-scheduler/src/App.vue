@@ -21,7 +21,7 @@
       }
     },
     mounted(){
-      this.updateTasks()
+      // this.updateTasks()
     },
     methods:{
       newTaskAdded(task){
