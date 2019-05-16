@@ -10,7 +10,7 @@
                 </tr>
                 <tr v-for="task in tasks">
                     <td>{{task.taskName}}</td>
-                    <td>{{task.taskDuration}}</td>
+                    <td>{{task.duration}}</td>
                     <td>{{task.song}}</td>
                 </tr>
             </div>

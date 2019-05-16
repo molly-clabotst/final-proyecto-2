@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes)=>{
 
     var Task = sequelize.define('Task', {
-        name: {
+        taskName: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
